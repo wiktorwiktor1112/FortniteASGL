@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rejestracja - KrulikbugsCommunity</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #121212, #1e1e1e);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+        header {
+            background-color: #1e1e1e;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #181818;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+            margin-top: 50px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: 1px solid #444;
+            background-color: #333;
+            color: #fff;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .form-group input:focus {
+            background-color: #444;
+            border-color: #FF5722;
+            outline: none;
+        }
+        .submit-btn {
+            background-color: #FF5722;
+            color: #fff;
+            padding: 15px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .submit-btn:hover {
+            background-color: #FF7043;
+            transform: scale(1.05);
+        }
+        .switch-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .switch-link a {
+            color: #FF5722;
+            text-decoration: none;
+        }
+        .switch-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    Rejestracja - KrulikbugsCommunity
+</header>
+
+<div class="container">
+    <h2>Załóż konto</h2>
+    <div class="form-group">
+        <input type="text" id="registerUsername" placeholder="Nazwa użytkownika (max 30 znaków)" />
+    </div>
+    <div class="form-group">
+        <input type="email" id="registerEmail" placeholder="Email" />
+    </div>
+    <div class="form-group">
+        <input type="password" id="registerPassword" placeholder="Hasło (min. 6 znaków)" />
+    </div>
+    <div class="form-group">
+        <input type="password" id="registerPasswordConfirm" placeholder="Potwierdź hasło" />
+    </div>
+    <button class="submit-btn" onclick="register()">Zarejestruj się</button>
+
+    <div class="switch-link">
+        <p>Masz już konto? <a href="logowanie.html">Zaloguj się tutaj</a></p>
+    </div>
+</div>
+
+<script>
+    // Przechowywanie danych użytkowników
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+
+    // Funkcja rejestracji
+    function register() {
+        const username = document.getElementById('registerUsername').value;
+        const email = document.getElementById('registerEmail').value;
+        const password = document.getElementById('registerPassword').value;
+        const passwordConfirm = document.getElementById('registerPasswordConfirm').value;
+
+        if (username.length > 30 || username.includes(' ') || !email || password.length < 6 || password !== passwordConfirm) {
+            alert("Błąd w danych. Sprawdź ponownie.");
+            return;
+        }
+
+        // Sprawdzenie, czy email już istnieje
+        if (users.some(user => user.email === email)) {
+            alert("Email już jest zarejestrowany.");
+            return;
+        }
+
+        const newUser = {
+            username: username,
+            email: email,
+            password: password,
+            profilePic: username.charAt(0).toUpperCase()  // Pierwsza litera nazwy jako profilowe
+        };
+
+        users.push(newUser);
+        localStorage.setItem('users', JSON.stringify(users));
+        alert("Konto zostało stworzone!");
+        window.location.href = "logowanie.html"; // Przenosi po zakończeniu rejestracji
+    }
+</script>
+
+</body>
+</html>

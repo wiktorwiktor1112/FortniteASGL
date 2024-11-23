@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Potwierdzenie Zakupu - KrulikbugsCommunity</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #1e1e1e;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #181818;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 50px;
+        }
+        .input-field {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        .input-field input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ffffff;
+            background-color: #1e1e1e;
+            color: #fff;
+        }
+        .payment-button {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 15px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .payment-button:hover {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    Potwierdzenie Zakupu - KrulikbugsCommunity
+</header>
+
+<div class="container">
+    <h1>Potwierdź swój zakup</h1>
+    <p>Wpisz swój e-mail i zapłać odpowiednią kwotę.</p>
+
+    <div id="productDetails">
+        <p id="productName">Produkt: </p>
+        <p id="productPrice">Cena: </p>
+    </div>
+
+    <div class="input-field">
+        <label for="email">Twój e-mail:</label>
+        <input type="email" id="email" placeholder="Wpisz swój e-mail" required>
+    </div>
+
+    <div class="input-field">
+        <label for="amount">Kwota do zapłaty:</label>
+        <input type="text" id="amount" placeholder="Kwota" readonly required>
+    </div>
+
+    <button class="payment-button" onclick="proceedToPayment()">Zakończ Zakup</button>
+</div>
+
+<script>
+    // Get URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const price = urlParams.get('price');
+    const product = urlParams.get('product');
+
+    // Display product details
+    document.getElementById('productName').innerText = `Produkt: ${product}`;
+    document.getElementById('productPrice').innerText = `Cena: ${price} zł`;
+    document.getElementById('amount').value = price;
+
+    function proceedToPayment() {
+        const email = document.getElementById('email').value;
+        if (email) {
+            // Create PayPal link with the amount to be paid
+            const paypalLink = `https://paypal.me/ZakupFortnite?country.x=PL&locale.x=pl_PL&amount=${price}&note=${email}`;
+            window.location.href = paypalLink; // Redirect to PayPal
+        } else {
+            alert('Proszę wpisać swój e-mail.');
+        }
+    }
+</script>
+
+</body>
+</html>

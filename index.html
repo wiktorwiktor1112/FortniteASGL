@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zakup Kont Fortnite - KrulikbugsCommunity</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #1e1e1e;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .tab-button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .tab-button:hover {
+            background-color: #FF5722;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 20px;
+        }
+
+        .user-profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .user-profile img:hover {
+            transform: scale(1.1);
+        }
+
+        .user-profile span {
+            color: #FF5722;
+            font-size: 18px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #181818;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 50px;
+        }
+
+        .item-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .item {
+            background-color: #2e2e2e;
+            padding: 20px;
+            border-radius: 10px;
+            width: 200px;
+            text-align: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .item:hover {
+            transform: scale(1.05);
+            background-color: #333;
+        }
+
+        .item img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        .item h3 {
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .item p {
+            color: #bbb;
+        }
+
+        .item button {
+            background-color: #FF5722;
+            color: #fff;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .item button:hover {
+            background-color: #FF7844;
+        }
+
+        .profile-form label {
+            display: block;
+            margin-top: 15px;
+        }
+
+        .profile-form input[type="text"],
+        .profile-form input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .profile-form button {
+            background-color: #FF5722;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .profile-form button:hover {
+            background-color: #FF7844;
+        }
+
+        .gif-notice {
+            font-size: 14px;
+            color: #FF5722;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    Zakup Kont Fortnite - KrulikbugsCommunity
+</header>
+
+<div class="tabs">
+    <button class="tab-button" onclick="showTab('home')">Strona Główna</button>
+    <button class="tab-button hidden" id="profileTab" onclick="showTab('profile')">Profil</button>
+    <button class="tab-button hidden" id="logoutTab" onclick="logout()">Wyloguj się</button>
+    <button class="tab-button" id="loginTab" onclick="redirectToLogin()">Zaloguj się</button>
+</div>
+
+<div class="user-profile" id="userProfile"></div>
+
+<!-- Strona główna -->
+<div class="container" id="homePage">
+    <h1>Witaj na stronie zakupowej!</h1>
+    <div class="item-list">
+        <div class="item" data-name="Mystery Box">
+            <img src="https://via.placeholder.com/100" alt="Mystery Box">
+            <h3>Mystery Box</h3>
+            <p>Cena: 32 zł</p>
+            <button onclick="goToBuyPage('Mystery Box', 32)">Zakup</button>
+        </div>
+        <div class="item" data-name="1-20k v-dolce">
+            <img src="https://via.placeholder.com/100" alt="1-20k v-dolce">
+            <h3>1-20k v-dolce</h3>
+            <p>Cena: 60 zł</p>
+            <button onclick="goToBuyPage('1-20k v-dolce', 60)">Zakup</button>
+        </div>
+        <div class="item" data-name="Subskrypcja GIF">
+            <img src="https://via.placeholder.com/100" alt="Subskrypcja GIF">
+            <h3>Subskrypcja GIF</h3>
+            <p>Cena: 10 zł</p>
+            <button onclick="goToBuyPage('Subskrypcja GIF', 10)">Zakup</button>
+        </div>
+    </div>
+</div>
+
+<!-- Strona profilu -->
+<div class="container hidden" id="profilePage">
+    <h1>Edytuj Profil</h1>
+    <form id="profileForm" class="profile-form">
+        <label for="newUsername">Nowa nazwa użytkownika:</label>
+        <input type="text" id="newUsername" required maxlength="30">
+
+        <label for="newProfilePic">Nowe zdjęcie profilowe:</label>
+        <input type="file" id="newProfilePic" accept="image/png, image/jpeg, image/jpg, image/gif">
+        <span class="gif-notice">GIF jest dostępny tylko z subskrypcją!</span>
+
+        <button type="submit">Zapisz zmiany</button>
+    </form>
+</div>
+
+<script>
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const username = localStorage.getItem('username') || 'Gość';
+    const profilePic = localStorage.getItem('profilePic') || 'https://via.placeholder.com/40';
+    const hasGifSubscription = localStorage.getItem('hasGifSubscription') === 'true';
+
+    function updateUserProfileUI() {
+        document.getElementById('userProfile').innerHTML = `
+            <span>${username}</span>
+            <img src="${profilePic}" alt="Profile" onclick="showTab('profile')">
+        `;
+
+        document.getElementById('loginTab').classList.toggle('hidden', isLoggedIn);
+        document.getElementById('logoutTab').classList.toggle('hidden', !isLoggedIn);
+        document.getElementById('profileTab').classList.toggle('hidden', !isLoggedIn);
+    }
+
+    function goToBuyPage(product, price) {
+        if (product === 'Subskrypcja GIF') {
+            localStorage.setItem('hasGifSubscription', 'true');
+            alert('Subskrypcja GIF zakupiona!');
+        } else {
+            window.location.href = `buy.html?product=${product}&price=${price}`;
+        }
+    }
+
+    document.getElementById('profileForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const newUsername = document.getElementById('newUsername').value;
+        const newProfilePic = document.getElementById('newProfilePic').files[0];
+
+        if (newProfilePic && !hasGifSubscription && newProfilePic.type === 'image/gif') {
+            alert('Aby użyć GIF-a jako profilowego, zakup subskrypcję!');
+            return;
+        }
+
+        if (newProfilePic && !['image/png', 'image/jpeg', 'image/jpg', 'image/gif'].includes(newProfilePic.type)) {
+            alert('Nieprawidłowy format pliku!');
+            return;
+        }
+
+        localStorage.setItem('username', newUsername || username);
+        if (newProfilePic) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                localStorage.setItem('profilePic', reader.result);
+                updateUserProfileUI();
+            };
+            reader.readAsDataURL(newProfilePic);
+        }
+
+        alert('Zmiany zapisane!');
+        updateUserProfileUI();
+        showTab('home');
+    });
+
+    function showTab(tab) {
+        document.getElementById('homePage').classList.toggle('hidden', tab !== 'home');
+        document.getElementById('profilePage').classList.toggle('hidden', tab !== 'profile');
+    }
+
+    function logout() {
+        localStorage.clear();
+        window.location.reload();
+    }
+
+    function redirectToLogin() {
+        window.location.href = 'login.html';
+    }
+
+    updateUserProfileUI();
+</script>
+
+</body>
+</html>
