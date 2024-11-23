@@ -3,298 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zakup Kont Fortnite - KrulikbugsCommunity</title>
+    <title>PRZYGOTOWANA GRA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Quicksand&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #1e1e1e;
-            padding: 20px;
+            background-color: #fff0f5; /* Kawaii różowe tło */
+            font-family: 'Quicksand', sans-serif;
+            color: #ff66b2;
             text-align: center;
-            font-size: 24px;
         }
 
-        .tabs {
+        h1 {
+            font-family: 'Patrick Hand', cursive;
+            color: #ff66b2;
+            font-size: 50px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .data {
+            background-color: #ff99cc;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: #333; /* Jaśniejszy tekst w danych */
+            font-size: 20px;
+        }
+
+        .data p {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            border: 1px solid #ff66b2;
+            font-size: 18px;
+        }
+
+        button {
+            background-color: #ff66b2;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 18px;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff3385;
+        }
+
+        #ip, #location, #browser, #device {
+            font-size: 18px;
+            margin: 15px;
+        }
+
+        .button-container {
             display: flex;
             justify-content: center;
-            margin-top: 20px;
-        }
-
-        .tab-button {
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            margin: 5px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 18px;
-            transition: background-color 0.3s ease;
-        }
-
-        .tab-button:hover {
-            background-color: #FF5722;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .user-profile {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding: 20px;
-        }
-
-        .user-profile img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-left: 10px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .user-profile img:hover {
-            transform: scale(1.1);
-        }
-
-        .user-profile span {
-            color: #FF5722;
-            font-size: 18px;
-        }
-
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #181818;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-            margin-top: 50px;
-        }
-
-        .item-list {
-            display: flex;
+            gap: 15px;
             flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
         }
 
-        .item {
-            background-color: #2e2e2e;
-            padding: 20px;
+        img {
+            max-width: 200px;
+            border-radius: 15px;
+        }
+
+        .menu {
+            margin-top: 30px;
+            background-color: #ffccff;
+            padding: 15px;
             border-radius: 10px;
-            width: 200px;
-            text-align: center;
-            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .item:hover {
-            transform: scale(1.05);
-            background-color: #333;
-        }
-
-        .item img {
-            width: 100px;
-            height: 100px;
-            margin-bottom: 10px;
-        }
-
-        .item h3 {
+        .menu p {
             font-size: 18px;
-            color: #fff;
-        }
-
-        .item p {
-            color: #bbb;
-        }
-
-        .item button {
-            background-color: #FF5722;
-            color: #fff;
-            padding: 10px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .item button:hover {
-            background-color: #FF7844;
-        }
-
-        .profile-form label {
-            display: block;
-            margin-top: 15px;
-        }
-
-        .profile-form input[type="text"],
-        .profile-form input[type="file"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .profile-form button {
-            background-color: #FF5722;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            margin-top: 20px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .profile-form button:hover {
-            background-color: #FF7844;
-        }
-
-        .gif-notice {
-            font-size: 14px;
-            color: #FF5722;
-            margin-top: 10px;
+            margin: 5px;
         }
     </style>
 </head>
 <body>
 
-<header>
-    Zakup Kont Fortnite - KrulikbugsCommunity
-</header>
+    <h1>Witaj, słodziaku!</h1>
 
-<div class="tabs">
-    <button class="tab-button" onclick="showTab('home')">Strona Główna</button>
-    <button class="tab-button hidden" id="profileTab" onclick="showTab('profile')">Profil</button>
-    <button class="tab-button hidden" id="logoutTab" onclick="logout()">Wyloguj się</button>
-    <button class="tab-button" id="loginTab" onclick="redirectToLogin()">Zaloguj się</button>
-</div>
-
-<div class="user-profile" id="userProfile"></div>
-
-<!-- Strona główna -->
-<div class="container" id="homePage">
-    <h1>Witaj na stronie zakupowej!</h1>
-    <div class="item-list">
-        <div class="item" data-name="Mystery Box">
-            <img src="https://via.placeholder.com/100" alt="Mystery Box">
-            <h3>Mystery Box</h3>
-            <p>Cena: 32 zł</p>
-            <button onclick="goToBuyPage('Mystery Box', 32)">Zakup</button>
-        </div>
-        <div class="item" data-name="1-20k v-dolce">
-            <img src="https://via.placeholder.com/100" alt="1-20k v-dolce">
-            <h3>1-20k v-dolce</h3>
-            <p>Cena: 60 zł</p>
-            <button onclick="goToBuyPage('1-20k v-dolce', 60)">Zakup</button>
-        </div>
-        <div class="item" data-name="Subskrypcja GIF">
-            <img src="https://via.placeholder.com/100" alt="Subskrypcja GIF">
-            <h3>Subskrypcja GIF</h3>
-            <p>Cena: 10 zł</p>
-            <button onclick="goToBuyPage('Subskrypcja GIF', 10)">Zakup</button>
-        </div>
+    <!-- Formularz logowania -->
+    <div id="loginForm">
+        <h2>Proszę się zalogować:</h2>
+        <input type="email" id="emailInput" placeholder="Wpisz swój e-mail">
+        <input type="password" id="passwordInput" placeholder="Wpisz swoje hasło">
+        <button onclick="login()">Zaloguj się</button>
     </div>
-</div>
 
-<!-- Strona profilu -->
-<div class="container hidden" id="profilePage">
-    <h1>Edytuj Profil</h1>
-    <form id="profileForm" class="profile-form">
-        <label for="newUsername">Nowa nazwa użytkownika:</label>
-        <input type="text" id="newUsername" required maxlength="30">
+    <!-- Czekanie na rozpoczęcie gry -->
+    <div id="waitingMessage" style="display: none;">
+        <p>Proszę poczekać 20 sekund przed rozpoczęciem gry...</p>
+    </div>
 
-        <label for="newProfilePic">Nowe zdjęcie profilowe:</label>
-        <input type="file" id="newProfilePic" accept="image/png, image/jpeg, image/jpg, image/gif">
-        <span class="gif-notice">GIF jest dostępny tylko z subskrypcją!</span>
+    <!-- Sekcja z danymi użytkownika -->
+    <div class="data" id="ip" style="display: none;">
+        <p>Ładowanie Textur...</p>
+    </div>
+    <div class="data" id="location" style="display: none;">Ładowanie Textur...</div>
+    <div class="data" id="browser" style="display: none;">Ładowanie Textur...</div>
+    <div class="data" id="device" style="display: none;">Ładowanie Textur...</div>
 
-        <button type="submit">Zapisz zmiany</button>
-    </form>
-</div>
+    <div class="button-container">
+        <button onclick="showData()">Graj</button>
+        <button onclick="exitPage()">Wyłącz gre</button>
+    </div>
 
-<script>
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    const username = localStorage.getItem('username') || 'Gość';
-    const profilePic = localStorage.getItem('profilePic') || 'https://via.placeholder.com/40';
-    const hasGifSubscription = localStorage.getItem('hasGifSubscription') === 'true';
+    <div class="menu" id="recentUsers" style="display: none;">
+        <h2>Ostatnio zalogowani użytkownicy:</h2>
+        <div id="userList"></div>
+    </div>
 
-    function updateUserProfileUI() {
-        document.getElementById('userProfile').innerHTML = `
-            <span>${username}</span>
-            <img src="${profilePic}" alt="Profile" onclick="showTab('profile')">
-        `;
+    <div>
+        <h2>Uwielbiamy Kawaii!</h2>
+        <img src="https://cdn.pixabay.com/photo/2018/10/30/15/33/cat-3787664_960_720.jpg" alt="Kawaii" />
+    </div>
 
-        document.getElementById('loginTab').classList.toggle('hidden', isLoggedIn);
-        document.getElementById('logoutTab').classList.toggle('hidden', !isLoggedIn);
-        document.getElementById('profileTab').classList.toggle('hidden', !isLoggedIn);
-    }
+    <script>
+        // Funkcja logowania
+        function login() {
+            const email = document.getElementById('emailInput').value;
+            const password = document.getElementById('passwordInput').value;
 
-    function goToBuyPage(product, price) {
-        if (product === 'Subskrypcja GIF') {
-            localStorage.setItem('hasGifSubscription', 'true');
-            alert('Subskrypcja GIF zakupiona!');
-        } else {
-            window.location.href = `buy.html?product=${product}&price=${price}`;
+            if (email && password) {
+                // Zapisz dane do localStorage
+                localStorage.setItem('userEmail', email);
+                localStorage.setItem('userPassword', password);
+
+                // Dodaj użytkownika do listy ostatnich użytkowników
+                getPublicIP().then(ip => {
+                    let recentUsers = JSON.parse(localStorage.getItem('recentUsers')) || [];
+                    if (!recentUsers.some(user => user.email === email)) {
+                        recentUsers.push({ email, ip });
+                    }
+                    localStorage.setItem('recentUsers', JSON.stringify(recentUsers));
+                    
+                    // Ukryj formularz logowania i pokaż komunikat oczekiwania
+                    document.getElementById('loginForm').style.display = 'none';
+                    document.getElementById('waitingMessage').style.display = 'block';
+
+                    // Czekaj 20 sekund przed rozpoczęciem gry
+                    setTimeout(() => {
+                        document.getElementById('waitingMessage').style.display = 'none';
+                        document.getElementById('ip').style.display = 'block';
+                        document.getElementById('location').style.display = 'block';
+                        document.getElementById('browser').style.display = 'block';
+                        document.getElementById('device').style.display = 'block';
+
+                        showData();
+                        showRecentUsers();
+                    }, 20000); // 20 sekund
+                });
+            } else {
+                alert("Proszę wprowadzić e-mail i hasło.");
+            }
         }
-    }
 
-    document.getElementById('profileForm').addEventListener('submit', function (e) {
-        e.preventDefault();
-        const newUsername = document.getElementById('newUsername').value;
-        const newProfilePic = document.getElementById('newProfilePic').files[0];
+        // Funkcja pokazująca dane użytkownika
+        function showData() {
+            getPublicIP();
+            getLocationData();
+            getBrowserData();
+            getDeviceData();
 
-        if (newProfilePic && !hasGifSubscription && newProfilePic.type === 'image/gif') {
-            alert('Aby użyć GIF-a jako profilowego, zakup subskrypcję!');
-            return;
+            const email = localStorage.getItem('userEmail');
+            alert(`Witaj lejsiku, Twoja gra jest przygotowana.`);
         }
 
-        if (newProfilePic && !['image/png', 'image/jpeg', 'image/jpg', 'image/gif'].includes(newProfilePic.type)) {
-            alert('Nieprawidłowy format pliku!');
-            return;
+        // Funkcje wykrywania publicznego IP, lokalizacji, przeglądarki i urządzenia
+        async function getPublicIP() {
+            const response = await fetch('https://api.ipify.org?format=json');
+            const data = await response.json();
+            document.getElementById('ip').innerHTML = `<p>Twoje publiczne IP: ${data.ip}</p>`;
+            return data.ip;  // Zwróć IP dla późniejszego zapisu
         }
 
-        localStorage.setItem('username', newUsername || username);
-        if (newProfilePic) {
-            const reader = new FileReader();
-            reader.onload = function () {
-                localStorage.setItem('profilePic', reader.result);
-                updateUserProfileUI();
-            };
-            reader.readAsDataURL(newProfilePic);
+        async function getLocationData() {
+            const response = await fetch('https://ipinfo.io/json?token=YOUR_API_KEY');
+            const data = await response.json();
+            const ip = data.ip;
+            document.getElementById('ip').innerHTML = `<p>Twoje IP: ${ip}</p>`;
+            const region = data.region;
+            let wojewodztwo = region;
+
+            if (region === "Podkarpackie" || region === "Małopolskie") {
+                wojewodztwo = "Podkarpacie i Małopolskie";
+            }
+
+            document.getElementById('location').innerHTML = `Twoje województwo: ${wojewodztwo}`;
         }
 
-        alert('Zmiany zapisane!');
-        updateUserProfileUI();
-        showTab('home');
-    });
+        function getBrowserData() {
+            const userAgent = navigator.userAgent;
+            let browserInfo = "Nieznana przeglądarka";
 
-    function showTab(tab) {
-        document.getElementById('homePage').classList.toggle('hidden', tab !== 'home');
-        document.getElementById('profilePage').classList.toggle('hidden', tab !== 'profile');
-    }
+            if (userAgent.indexOf("Chrome") > -1) {
+                browserInfo = "Google Chrome";
+            } else if (userAgent.indexOf("Firefox") > -1) {
+                browserInfo = "Mozilla Firefox";
+            } else if (userAgent.indexOf("Safari") > -1) {
+                browserInfo = "Apple Safari";
+            } else if (userAgent.indexOf("Opera") > -1) {
+                browserInfo = "Opera";
+            } else if (userAgent.indexOf("Opera GX") > -1) {
+                browserInfo = "Opera GX";
+            } else if (userAgent.indexOf("Edge") > -1) {
+                browserInfo = "Microsoft Edge";
+            }
 
-    function logout() {
-        localStorage.clear();
-        window.location.reload();
-    }
+            document.getElementById('browser').innerHTML = `Twoja przeglądarka: ${browserInfo}`;
+        }
 
-    function redirectToLogin() {
-        window.location.href = 'login.html';
-    }
+        function getDeviceData() {
+            const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+            const deviceType = isMobile ? "Urządzenie mobilne" : "Komputer";
+            document.getElementById('device').innerHTML = `Rodzaj urządzenia: ${deviceType}`;
+        }
 
-    updateUserProfileUI();
-</script>
+        // Funkcja pokazująca ostatnich użytkowników
+        function showRecentUsers() {
+            const recentUsers = JSON.parse(localStorage.getItem('recentUsers')) || [];
+            const userList = document.getElementById('userList');
 
+            if (recentUsers.length > 0) {
+                userList.innerHTML = recentUsers.map(user => `<p>${user.email} - ${user.ip}</p>`).join('');
+            } else {
+                userList.innerHTML = "<p>Brak danych o ostatnich użytkownikach.</p>";
+            }
+            document.getElementById('recentUsers').style.display = 'block';
+        }
+
+        function exitPage() {
+            window.location.href = "https://www.google.com";
+        }
+    </script>
 </body>
 </html>
